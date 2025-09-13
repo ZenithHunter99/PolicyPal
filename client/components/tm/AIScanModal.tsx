@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { Customer } from "@shared/api";
 import { Mic, Upload } from "lucide-react";
 
 // Mocking SpeechRecognition for environments where it's not available
-const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
 export function AIScanModal({ open, onOpenChange, onFilled }: { open: boolean; onOpenChange: (v: boolean) => void; onFilled: (d: Customer) => void; }) {
   const [file, setFile] = useState<File | null>(null);

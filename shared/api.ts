@@ -50,3 +50,9 @@ export interface AutomationRule {
   action: 'Send SMS' | 'Send Email' | 'Create Task';
   enabled: boolean;
 }
+
+export interface DemoResponse {
+  message: string;
+  timestamp: string;
+  data: any;
+}

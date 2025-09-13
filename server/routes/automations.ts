@@ -8,6 +8,6 @@ const automationRules: AutomationRule[] = [
     { id: "auto-4", name: "Claim Filed Notification", trigger: "Claim Filed", action: "Send Email", enabled: true },
 ];
 
-export const getAutomations: RequestHandler = (req, res) => {
+export const getAutomations: RequestHandler = (_req, res) => {
   res.status(200).json(automationRules);
 };

@@ -9,6 +9,17 @@ const policies: Policy[] = [
     { id: "PL-1005", customerId: "CUST-005", customer: "Arjun Mehta", type: "Travel", insurer: "Tata AIG", status: "Active", dueDate: "—", amount: 5200, policyNumber: "TATA445566", startDate: "2025-01-10", endDate: "2025-01-25" },
 ];
 
-export const getPolicies: RequestHandler = (req, res) => {
+export const getPolicies: RequestHandler = (_req, res) => {
   res.status(200).json(policies);
+};
+
+export const getPolicyById: RequestHandler = (req, res) => {
+  const { id } = req.params;
+  const policy = policies.find(p => p.id === id);
+  
+  if (!policy) {
+    return res.status(404).json({ error: 'Policy not found' });
+  }
+  
+  res.status(200).json(policy);
 };

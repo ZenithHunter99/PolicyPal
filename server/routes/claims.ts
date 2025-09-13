@@ -7,6 +7,6 @@ const claims: Claim[] = [
     { id: "CLM-003", policyId: "PL-1004", customer: "Pooja Verma", claimDate: "2025-05-10", amount: 5000, status: "Rejected", description: "Pre-existing condition" },
 ];
 
-export const getClaims: RequestHandler = (req, res) => {
+export const getClaims: RequestHandler = (_req, res) => {
   res.status(200).json(claims);
 };

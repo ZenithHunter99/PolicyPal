@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { Insurer } from "@shared/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Insurer } from "../../shared/api";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Skeleton } from "../components/ui/skeleton";
 import { CheckCircle, ZapOff } from "lucide-react";
 
 const fetchInsurers = async (): Promise<Insurer[]> => {

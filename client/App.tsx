@@ -1,17 +1,16 @@
 import "./global.css";
 
-import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "sonner";
+import { TooltipProvider } from "./components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import { Customer } from "@shared/api";
+import { Customer } from "../shared/api";
 import { toast } from "sonner";
 
 // Layout and Pages
-import { Layout } from "@/components/tm/Layout";
+import { Layout } from "./components/tm/Layout";
 import Dashboard from "./pages/Dashboard";
 import Claims from "./pages/Claims";
 import Workflows from "./pages/Workflows";
@@ -20,8 +19,8 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 // Feature Components
-import { AIScanModal } from "@/components/tm/AIScanModal";
-import { Chatbot } from "@/components/tm/Chatbot";
+import { AIScanModal } from "./components/tm/AIScanModal";
+import { Chatbot } from "./components/tm/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -40,7 +39,6 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Sonner />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout onScanClick={() => setScanOpen(true)} />}>
@@ -58,6 +56,6 @@ const App = () => {
       </TooltipProvider>
     </QueryClientProvider>
   );
-};
+}
 
 createRoot(document.getElementById("root")!).render(<App />);

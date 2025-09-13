@@ -16,7 +16,7 @@ export function createServer() {
   app.use(express.urlencoded({ extended: true }));
 
   // API routes
-  app.get("/api/ping", (_req, res) => {
+  app.get("/api/ping", (_req: any, res: any) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
     res.json({ message: ping });
   });

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { AutomationRule, Policy } from "@shared/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
+import { AutomationRule, Policy } from "../../shared/api";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
+import { Switch } from "../components/ui/switch";
+import { Badge } from "../components/ui/badge";
+import { Skeleton } from "../components/ui/skeleton";
 
 const fetchPolicies = async (): Promise<Policy[]> => {
     const res = await fetch('/api/policies');

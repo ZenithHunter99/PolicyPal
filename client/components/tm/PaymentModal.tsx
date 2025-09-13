@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import QRCode from "qrcode";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { downloadReceipt } from "@/components/tm/receipt";
+import * as QRCode from "qrcode";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { downloadReceipt } from "./receipt";
 import { toast } from "sonner";
-import { Policy } from "@shared/api";
+import { Policy } from "../../../shared/api";
 
 export interface PaymentModalProps {
   open: boolean;
@@ -28,7 +28,7 @@ export function PaymentModal({ open, onOpenChange, policy }: PaymentModalProps) 
 
   useEffect(() => {
     if (open && method === "upi" && canvasRef.current && upiString) {
-      QRCode.toCanvas(canvasRef.current, upiString, { width: 220 }, (err) => {
+      QRCode.toCanvas(canvasRef.current, upiString, { width: 220 }, (err: any) => {
         if (err) console.error(err);
       });
     }
@@ -37,7 +37,8 @@ export function PaymentModal({ open, onOpenChange, policy }: PaymentModalProps) 
   function success(selectedMethod: string) {
     if(!policy) return;
     const txnId = `${selectedMethod.toUpperCase()}-${Date.now()}`;
-    downloadReceipt({
+    downloadReceipt(policyId, customer);
+    console.log({
       policyId,
       customer,
       amount,

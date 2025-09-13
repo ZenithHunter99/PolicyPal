@@ -10,6 +10,6 @@ const insurers: Insurer[] = [
     { id: "insurer-6", name: "Bajaj Allianz", isConnected: false },
 ];
 
-export const getInsurers: RequestHandler = (req, res) => {
+export const getInsurers: RequestHandler = (_req, res) => {
   res.status(200).json(insurers);
 };
